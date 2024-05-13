@@ -12,25 +12,29 @@ export function TreatmentList() {
     `;
 
   const ul = document.createElement("ul");
+  ul.classList.add('treatments-wrapper')
 
   // Pobieramy zabiegi (surowe dane)
   fetch("http://localhost:3000/treatments")
     .then((response) => response.json())
     .then((treatments) => {
       // Wytwarzamy elementy listy
-      const lis = treatments.map((treatment) => {
+      const list = treatments.map((treatment) => {
         const li = document.createElement("li");
-
+        li.classList.add("treatment-item");
         li.innerHTML = `
-                    <h4>${treatment.name}</h4>
-                    <p>
-                        <strong>${treatment.price.toFixed(2)} PLN</strong>
+        <h4 class="name">${treatment.name}</h4>
+        <img class="treatment-img" src="${require("../assets/capybaras.jpg")}"/>
+        <p class="price">
+                        <span>${treatment.price.toFixed(2)} PLN</span>
                     </p>
-                    <footer></footer>
+                    
                 `;
+
         const readMoreButton = NavButton("Read more", () =>
           TreatmentDetails(treatment.id)
         );
+        readMoreButton.classList.add("read-more")
         const addToCartButton = AddToCartButton(() =>
           cartManager.add(treatment)
         );
@@ -39,7 +43,7 @@ export function TreatmentList() {
       });
 
       // ul.append(lis[0]. list[1], ...);
-      ul.append(...lis);
+      ul.append(...list);
       section.append(ul);
       section.querySelector(".loading").remove();
     });

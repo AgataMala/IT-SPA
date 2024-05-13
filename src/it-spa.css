@@ -6,6 +6,7 @@ body {
   min-height: 100vh;
   font-family: "Poppins", sans-serif;
   margin: 0;
+  position: relative;
 }
 nav {
   text-align: center;
@@ -13,7 +14,7 @@ nav {
 .copy {
   width: 100%;
   text-align: center;
-  position: fixed;
+  position: absolute;
   bottom: 0;
   color: #353432;
   font-size: 10px;
@@ -23,6 +24,7 @@ nav {
   width: 900px;
   max-width: 90vw;
   margin: auto;
+  padding-bottom: 40px;
 }
 .rooms-container .room-item img {
   width: 100%;
@@ -42,7 +44,8 @@ nav {
 .rooms-container .room-item:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
-.rooms-container .room-item {
+.rooms-container .room-item,
+.treatment-item {
   background-color: #eeeee6;
   border-radius: 10px;
   list-style: none;
@@ -84,6 +87,7 @@ nav {
 }
 .btn-nav {
   width: 100px;
+  margin-top: 0;
 }
 .btn-nav:hover {
   background-color: #232322;
@@ -108,7 +112,7 @@ nav {
   right: 0;
   display: flex;
   align-items: baseline;
-  margin: 4px;
+  margin: 10px;
   svg {
     width: 24px;
     fill: #2980b9;
@@ -142,8 +146,8 @@ body.showCartTab .mini-cart {
     font-weight: 300;
   }
   width: 400px;
-  background-color: #0d2536;
-  color: #eee;
+  background-color: #141516;
+  color: #816839;
   position: fixed;
   inset: 0 -400px 0 auto;
   /* top: 0;
@@ -158,11 +162,14 @@ body.showCartTab .mini-cart {
   grid-template-columns: repeat(2, 1fr);
 }
 .action-btn {
-  background-color: rgb(130, 84, 32);
+  background-color: rgb(115, 74, 28);
   border: none;
-  font-weight: 500;
+  font-weight: 300;
   cursor: pointer;
-  font-size: 24px;
+  font-size: 18px;
+}
+.action-btn:hover {
+  opacity: 0.8;
 }
 .action-btn.close {
   background-color: #fff;
@@ -180,12 +187,22 @@ body.showCartTab .mini-cart {
   gap: 10px;
   text-align: center;
   align-items: center;
+  font-size: 12px;
+}
+.mini-cart .mini-cart--list .list-item button {
+  background: transparent;
+  display: flex;
+  justify-content: center;
+margin-right: 4px;
 }
 
+.mini-cart .mini-cart--list .list-item .item-price {
+  margin: 0px;
+}
 .mini-cart--list .item-quantity span {
   display: inline-block;
-  width: 25px;
-  height: 25px;
+  width: 20px;
+  height: 20px;
   background: #eee;
   color: black;
   border-radius: 50%;
@@ -205,11 +222,26 @@ body.showCartTab .mini-cart {
 .mini-cart--list::-webkit-scrollbar {
   width: 0;
 }
+.cart {
+  max-width: 700px;
+  margin: 16px auto;
+  font-size: 16px;
+}
+.cart.wrapper {
+  width: 75%;
+}
+.cart button {
+  font-size: 10px;
+  background-color: #ff412c;
+}
+.cart button:hover {
+  background-color: #d01b07;
+}
 .form-container {
   width: 100%;
   height: 100%;
 }
-.form-container .wrapper {
+ .wrapper {
   width: 50%;
   height: 50%;
   text-align: center;
@@ -230,7 +262,9 @@ form input {
   margin-bottom: 20px;
   font-size: 12px;
 }
-
+.btn-register {
+  margin-bottom: 24px;
+}
 .home {
   display: flex;
 }
@@ -250,4 +284,116 @@ form input {
   padding: 30px;
   flex-basis: 50%;
   font-weight: 300;
+}
+
+.treatment-img {
+  height: 200px;
+  width: 100%;
+  margin-bottom: 16px;
+}
+.treatment-item {
+  width: 50%;
+  padding: 24px;
+  margin-bottom: 16px;
+  text-align: center;
+  font-weight: 300;
+}
+.treatment-item .price {
+  font-size: 12px;
+  letter-spacing: 3px;
+}
+.treatments-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.treatment-item .name {
+  font-weight: 300;
+  margin-bottom: 16px;
+}
+.detail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 400px;
+  margin: 0 auto;
+}
+
+.room {
+  width: 250px;
+  background: #896434;
+  color: #816839;
+  margin-top: 36px;
+  border: 1px solid #353432;
+}
+.room img {
+  width: 100%;
+  border-radius: 0% 0% 50% 50%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.8);
+}
+
+.flip-card {
+  background-color: transparent;
+  width: 250px;
+  height: auto;
+  perspective: 1000px;
+  cursor: pointer;
+}
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+.flip-card-back {
+  background-color: white;
+  color: #816839;
+  transform: rotateY(180deg);
+  margin-top: 32px;
+  font-size: 18px;
+  border: 1px solid #353432;
+}
+.flip-card-back ul {
+  text-align: left;
+  font-size: 16px;
+  margin: 0px;
+  padding: 16px;
+}
+.flip-card-back li {
+  margin-bottom: 16px;
+}
+.treatment {
+  border: 1px solid black;
+  border-radius: 50px;
+  margin-top: 24px;
+  width: 300px;
+  height: 400px;
+  padding: 16px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
+  background-color: #d69ea47d;
+}
+.room-item .date {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.room-item .date label {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 10px;
 }

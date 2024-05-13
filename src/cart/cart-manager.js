@@ -1,13 +1,22 @@
 const key = "it_spa_cart";
 
 export const cartManager = {
-  add(item) {
+  add(item, date) {
     const cart = localStorage.getItem(key);
     let content;
     if (cart === null) {
+      let start = document.querySelector(".date input#start").value;
+      let end = document.querySelector(".date input#start").value;
       content = {
-        [item.name]: { price: item.price, quantity: 1, img: item.img },
+        [item.name]: {
+          price: item.price,
+          quantity: 1,
+          img: item.img,
+          start: date.start,
+          end: date.end,
+        },
       };
+      console.log(content, "content");
     } else {
       content = JSON.parse(cart);
 
@@ -17,11 +26,18 @@ export const cartManager = {
       } else {
         //produkt nie istnieje w koszyku wiec go dodajemy
         Object.assign(content, {
-          [item.name]: { price: item.price, quantity: 1 },
+          [item.name]: {
+            price: item.price,
+            quantity: 1,
+            start: item.start,
+            end: item.end,
+          },
         });
       }
+      // document.querySelector(".icon-cart span").textContent = content.length;
     }
     localStorage.setItem(key, JSON.stringify(content));
+    location.reload();
   },
 
   remove(item) {
@@ -38,6 +54,7 @@ export const cartManager = {
         }
       }
       localStorage.setItem(key, JSON.stringify(content));
+      location.reload();
     }
   },
 

@@ -1,6 +1,7 @@
 import { Home } from "../views/Home";
 import { RoomList } from "../views/RoomList";
 import { Registration } from "../views/Registration";
+import { Login } from "../views/Login";
 import { NavButton } from "./NavButton";
 import { MiniCartBtn } from "./MiniCartBtn";
 import { TreatmentList } from "../views/TreatmentList";
@@ -11,7 +12,8 @@ const navItems = [
   { text: "Rooms", component: RoomList },
   { text: "Treatments", component: TreatmentList },
   { text: "Cart", component: Cart },
-  { text: "Registration", component: Registration}
+  { text: "Registration", component: Registration},
+  { text: "Login", component: Login}
   // ...itd.
 ];
 

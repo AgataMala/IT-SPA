@@ -3,18 +3,21 @@ import { RemoveFromCartButton } from "../cart/RemoveFromCartButton";
 
 export function Cart() {
   const section = document.createElement("section");
+  section.classList.add("cart", "wrapper");
 
   section.innerHTML = `
-        <h1 class="header">Cart</h1>
+        <h1 class="header">Koszyk</h1>
         <p>Przegladaj zawartosc swojego koszyka.</p>
         <table class="table">
             <tr>
                 <th>Name</th>
                 <th>Quantity</th>
                 <th>Price</th>
+                <th>Date</th>
                 <th>Remove</th>
             </tr>
         </table>
+
     `;
 
   // Pojedynczy obiekt z tablicy:
@@ -26,6 +29,7 @@ export function Cart() {
             <td>${item.name}</td>
             <td>${item.quantity}</td>
             <td>${(item.quantity * item.price).toFixed(2)}</td>
+            <td>xx-xx-xxxx</td>
             <td></td>
         `;
 

@@ -1,17 +1,13 @@
 import { RegisterButton } from "../registration/RegisterButton";
 import { registrationManager } from "../registration/RegistrationManager.js";
 
-export function Registration() {
+export function Login() {
   const section = document.createElement("section");
   section.classList.add("form-container");
   section.innerHTML = `
   <div class="wrapper">
-        <h1 class="header">Registration</h1>
+        <h1 class="header">Login</h1>
         <form action="#">
-            <div clss="form-group">
-                <label for="name">Name</label>
-                <input type="text" class="form-control" id="name" name="name" placeholder="Name">
-            </div>
             <div clss="form-group">
                 <label for="email">Email</label>
                 <input type="email" class="form-control" id="email" name="email" placeholder="Email">
@@ -26,10 +22,12 @@ export function Registration() {
     </div>
     `;
 
-const registerButton = RegisterButton(() => registrationManager.registerUser());
+  //   const btn = document.querySelector("button#save.btn.btn-primary");
+  //   btn.addEventListener("click", alert("click"));
+  const registerButton = RegisterButton(() => registrationManager.loginUser());
 
-     
-    section.querySelector('form').append(registerButton)
+  registerButton.textContent = "Login";
+  section.querySelector("form").append(registerButton);
 
   return section;
 }

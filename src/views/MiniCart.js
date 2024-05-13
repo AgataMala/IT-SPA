@@ -7,21 +7,18 @@ export function MiniCart() {
   const miniCart = document.createElement("div");
   miniCart.classList.add("mini-cart");
   miniCart.innerHTML = `
-        <h3 class="mini-cart--title">Shopping Cart</h3>
+        <h3 class="mini-cart--title">Koszyk</h3>
         <div class="mini-cart--list">
             <ul></ul>
         </div>
         <div class="actions">
-        <button class="action-btn close">Close</button>
-        <button class="action-btn check-out">Check out</button>
+        <button class="action-btn close">Zamknij</button>
+        <button class="action-btn check-out">Do kasy</button>
         </div>
     
   `;
 
   const cart = localStorage.getItem('it_spa_cart');
-  const cartmen = cartManager.getAll()
-  console.log('cart', cart)
-  console.log('cartmen', cartmen)
   let cartItems = cartManager.getAll().map((item) => {
     const li = document.createElement("li");
     li.classList.add('list-item')

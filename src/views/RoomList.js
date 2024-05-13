@@ -12,7 +12,7 @@ export function RoomList() {
     `;
 
   const ul = document.createElement("ul");
-  ul.classList.add("rooms-container")
+  ul.classList.add("rooms-container");
   //http://localhost:3000/rooms
   // Pobieramy pokoje (surowe dane)
   fetch("http://localhost:3000/rooms")
@@ -21,7 +21,7 @@ export function RoomList() {
       // Wytwarzamy elementy listy
       const list = rooms.map((room) => {
         const li = document.createElement("li");
-        li.classList.add('room-item')
+        li.classList.add("room-item");
         li.innerHTML = `
         <img src="${require("../assets/capybaras.jpg")}"/>
                     <h4 class="name">${room.name}</h4>
@@ -30,12 +30,33 @@ export function RoomList() {
                     <p class="price">
                         ${room.price.toFixed(2)} PLN
                     </p>
+                    <div class='date'>
+                    <label for="start">Start date:
+                    <input type="date" id="start" name="trip-start" value="${new Date()}" min="${new Date()
+          .toJSON()
+          .slice(0, 10)}" max="2050-12-31" required />
+                    <span class="validity"></span>
+                    </label>
+                    <label for="end">End date:
+                    <input type="date" id="end" name="trip-start" value="${new Date()
+                      .toJSON()
+                      .slice(0, 10)}" min="${new Date()}" min="${new Date()
+          .toJSON()
+          .slice(0, 10)}" max="2050-12-31" required />
+                    <span class="validity"></span>
+                    </label>
+                    </div>
                  
                 `;
-
+                
+        // let start = document.querySelector(".date input#start").value;
+        // let end = document.querySelector(".date input#start").value;
+        // let date = { start: start, end: end };
         const readMoreButton = NavButton("Read more", () => RoomDetails(room));
-        const addToCartButton = AddToCartButton(() => cartManager.add(room));
-        readMoreButton.classList.add("read-more")
+        const addToCartButton = AddToCartButton(() =>
+          cartManager.add(room)
+        );
+        readMoreButton.classList.add("read-more");
         li.append(readMoreButton, addToCartButton);
 
         return li;
