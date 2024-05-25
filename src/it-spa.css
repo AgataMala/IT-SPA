@@ -10,6 +10,19 @@ body {
 }
 nav {
   text-align: center;
+  display: flex;
+  flex-direction: row;
+}
+@media screen and (max-width: 500px) {
+  nav {
+    flex-direction: column;
+    align-items: center;
+    gap: 1px;
+  }
+  .btn-nav {
+    width: 60%;
+    padding: 8px;
+  }
 }
 .copy {
   width: 100%;
@@ -89,6 +102,11 @@ nav {
   width: 100px;
   margin-top: 0;
 }
+@media screen and (max-width: 500px) {
+  .btn-nav {
+    width: 60%
+  }
+}
 .btn-nav:hover {
   background-color: #232322;
 }
@@ -145,7 +163,7 @@ body.showCartTab .mini-cart {
     padding: 20px;
     font-weight: 300;
   }
-  width: 400px;
+  width: 380px;
   background-color: #141516;
   color: #816839;
   position: fixed;
@@ -193,7 +211,7 @@ body.showCartTab .mini-cart {
   background: transparent;
   display: flex;
   justify-content: center;
-margin-right: 4px;
+  margin-right: 4px;
 }
 
 .mini-cart .mini-cart--list .list-item .item-price {
@@ -227,8 +245,18 @@ margin-right: 4px;
   margin: 16px auto;
   font-size: 16px;
 }
+
 .cart.wrapper {
   width: 75%;
+}
+@media screen and (max-width: 768px) {
+  .cart.wrapper {
+    width: 100%;
+    font-size: 12px;
+  }
+  .table td {
+    padding: 0px;
+  }
 }
 .cart button {
   font-size: 10px;
@@ -241,7 +269,7 @@ margin-right: 4px;
   width: 100%;
   height: 100%;
 }
- .wrapper {
+.wrapper {
   width: 50%;
   height: 50%;
   text-align: center;
@@ -253,6 +281,11 @@ margin-right: 4px;
   align-items: center;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
   transition: 0.3s;
+}
+@media screen and (max-width: 600px) {
+  .wrapper {
+    width: 100%;
+  }
 }
 form label {
   margin-bottom: 0px;
@@ -267,12 +300,33 @@ form input {
 }
 .home {
   display: flex;
+  align-items: center;
 }
+@media screen and (max-width: 768px) {
+  .home {
+    flex-direction: column;
+    align-items: center;
+  }
+  .home-img {
+    max-width: 400px;
+  }
+}
+
 .home .home-img img {
-  width: 200px;
+  width: 100%;
+  max-width: 200px;
+  height: auto;
   border-radius: 10px;
   border-top: 2px solid #35343285;
   border-right: 2px solid #353432e3;
+}
+@media screen and (max-width: 480px) {
+  .home-img {
+    justify-content: center;
+  }
+  .home .home-img img {
+    max-width: none;
+  }
 }
 .home .home-img {
   display: flex;
@@ -287,7 +341,7 @@ form input {
 }
 
 .treatment-img {
-  height: 200px;
+  height: auto;
   width: 100%;
   margin-bottom: 16px;
 }
@@ -297,6 +351,11 @@ form input {
   margin-bottom: 16px;
   text-align: center;
   font-weight: 300;
+}
+@media screen and (max-width: 600px) {
+  .treatment-item {
+    width: 100%;
+  }
 }
 .treatment-item .price {
   font-size: 12px;
@@ -325,6 +384,22 @@ form input {
   color: #816839;
   margin-top: 36px;
   border: 1px solid #353432;
+}
+@media screen and (max-width: 768px) {
+  .rooms-container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0px;
+    justify-content: center;
+  }
+  .room-item {
+    flex-basis: 45%;
+  }
+}
+@media screen and (max-width: 480px) {
+  .room-item {
+    flex-basis: 100%;
+  }
 }
 .room img {
   width: 100%;
@@ -380,11 +455,19 @@ form input {
   border: 1px solid black;
   border-radius: 50px;
   margin-top: 24px;
-  width: 300px;
+  max-width: 300px;
   height: 400px;
   padding: 16px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
   background-color: #d69ea47d;
+}
+@media screen and (max-width: 480px) {
+  .treatment {
+    width: 100%;
+  }
+  .header {
+    font-size: 24px;
+  }
 }
 .room-item .date {
   display: flex;
